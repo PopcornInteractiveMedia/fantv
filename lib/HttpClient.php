@@ -67,7 +67,7 @@ class HttpClient
     public function setPostString($data, $isJson = false)
     {
         if ($isJson) {
-            $this->_postString = ($data);
+            $this->_postString = json_encode($data);
         } else {
             $this->_postString = http_build_query($data);
         }
@@ -95,6 +95,9 @@ class HttpClient
         curl_setopt($ch, CURLOPT_USERAGENT, $this->_userAgent);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 
         if ($this->_referrer != "") {
             curl_setopt($ch, CURLOPT_REFERER, $this->_referrer);

@@ -37,15 +37,21 @@ class FanTv
 
     public function getMovieCast($id)
     {
-        $url = 'metadata/fantv/movies/' . $id.'/cast';
+        $url = 'metadata/fantv/movies/' . $id . '/cast';
         $this->_http->setRequestUrl($url);
         $result = $this->_http->request();
         return ($result);
     }
 
-    public function getTvSchedule($zipCode){
+    public function getTvSchedule($country, $zip)
+    {
         $url = 'discover/browse/lineups';
         $this->_http->setRequestUrl($url);
+        $postStr = [
+            "country"=>$country,
+            "postal_code"=>$zip
+        ];
+        $this->_http->setPostString($postStr,true);
         $result = $this->_http->request();
         return ($result);
     }

@@ -30,21 +30,8 @@ foreach ($casts->data as $key => $val) {
 }*/
 
 //Get Tv Schedule
-$result = $fantv->getTvSchedule();
 
+$result = $fantv->getTvSchedule('US','90210');
+$tvschedules = json_decode($result);
 
-$helper->debug($result);
-
-/*
-
-
-$tvschedule = "https://api.fan.tv/1.0/discover/browse/lineups";
-$str = '{
-  "country": "US",
-  "postal_code": "90210"
-}';
-$db->setPostString($str,true);
-$response = $db->getHTTPResponse($tvschedule);
-$tvschedules = json_decode($response);
-echo '<pre>';
-print_r($tvschedules);*/
+$helper->debug($tvschedules);
