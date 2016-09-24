@@ -1,4 +1,5 @@
 <?php
+namespace lib;
 
 defined('_VALID_INCLUDE') or die('Restricted access');
 
@@ -18,20 +19,13 @@ class Functions
     private $_htmlPattern = "/<\/?\w+((\s+\w+(\s*=\s*(?:\".*?\"|'.*?'|[^'\">\s]+))?)+\s*|\s*)\/?>/";
     private $_addressPattern = "/^[a-zA-Z0-9,. -]+$/";
     private $_cityPattern = "/^[a-zA-Z' ]+$/";
-    private $_referrer = '';
-    private $_postString = '';
-    private $_headers = [];
-
-
-    public $_isDebug = false;
-    public $_showHeader = false;
 
     /**
      * @param String $var as input
      * @param String $text as Input identification name
      * Array $var as input
      * Object $var as input Description* */
-    function debug($var, $text = "", $isExit = true)
+    public function debug($var, $text = "", $isExit = true)
     {
         $str = '';
         $isShow = false;
@@ -59,7 +53,7 @@ class Functions
         }
     }
 
-    function decrypt($encryptedPassword, $key = "")
+    public function decrypt($encryptedPassword, $key = "")
     {
         $decrypt = "";
         if (empty($key)) {
@@ -73,7 +67,7 @@ class Functions
         return $decrypt;
     }
 
-    function encryptN($pwd, $data)
+    public function encryptN($pwd, $data)
     {
         $key[] = '';
         $box[] = '';
@@ -102,7 +96,7 @@ class Functions
         return $cipher;
     }
 
-    function dekode($u)
+    public function dekode($u)
     {
         $p = 'CSC';
         $u = $this->hex2bin($u);
@@ -111,12 +105,12 @@ class Functions
         return $a;
     }
 
-    function decryptN($pwd, $data)
+    public function decryptN($pwd, $data)
     {
         return $this->encryptN($pwd, $data);
     }
 
-    function hex2bin($kodehexa)
+    public function hex2bin($kodehexa)
     {
         $biner = "";
         for ($i = 0; $i < strlen($kodehexa); $i += 2) {
@@ -125,7 +119,7 @@ class Functions
         return $biner;
     }
 
-    function encrypt($password, $key = "")
+    public function encrypt($password, $key = "")
     {
         if (empty($key)) {
             $key = 'CSC';
@@ -146,7 +140,7 @@ class Functions
      *   generating secret keys and salts. Default false.
      * @return string The random password
      * */
-    function generatePassword($length = 6, $special_chars = true, $extra_special_chars = false)
+    public function generatePassword($length = 6, $special_chars = true, $extra_special_chars = false)
     {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         if ($special_chars) {
@@ -171,7 +165,7 @@ class Functions
      * @param int $max Upper limit for the generated number (optional, default is 4294967295)
      * @return int A random number between min and max
      */
-    function _rand($min = 0, $max = 0)
+    public function _rand($min = 0, $max = 0)
     {
         // Reset $rnd_value after 14 uses
         // 32(md5) + 40(sha1) + 40(sha1) / 8 = 14 random numbers from $rnd_value
@@ -193,7 +187,7 @@ class Functions
         return abs(intval($value));
     }
 
-    function isIsset($data, $fields = array())
+    public function isIsset($data, $fields = array())
     {
         if (empty($data)) {
             return array(
@@ -220,7 +214,7 @@ class Functions
         );
     }
 
-    function validateInputArray($inputs)
+    public function validateInputArray($inputs)
     {
         if (empty($inputs)) {
             return 'Oops!Somthing goes wrong.please try again.';
@@ -277,22 +271,22 @@ class Functions
         return $inputs;
     }
 
-    function isInt($string)
+    public function isInt($string)
     {
         return ctype_digit($string);
     }
 
-    function isAlphabets($string)
+    public function isAlphabets($string)
     {
         return ctype_alpha($string);
     }
 
-    function isAlphaNumeric($string)
+    public function isAlphaNumeric($string)
     {
         return ctype_alnum($string);
     }
 
-    function isHtml($string)
+    public function isHtml($string)
     {
         preg_match($this->_htmlPattern, $string, $matches);
         if (count($matches) == 0) {
@@ -302,7 +296,7 @@ class Functions
         }
     }
 
-    function isValidEmail($string)
+    public function isValidEmail($string)
     {
         if (strlen($string) > 60 && strlen($string) < 10) {
             return false;
@@ -311,7 +305,7 @@ class Functions
         return $valid;
     }
 
-    function isValidPass($string)
+    public function isValidPass($string)
     {
         if (strlen($string) >= 5 && strlen($string) <= 40) {
             return true;
@@ -319,12 +313,12 @@ class Functions
         return false;
     }
 
-    function isValidRole($string)
+    public function isValidRole($string)
     {
         return $this->isInt($string);
     }
 
-    function isValidName($string)
+    public function isValidName($string)
     {
         if (strlen($string) > 50 && strlen($string) < 3) {
             return false;
@@ -332,7 +326,7 @@ class Functions
         return preg_match_all($this->_namePattern, $string, $matches);
     }
 
-    function isValidAddress($string)
+    public function isValidAddress($string)
     {
         if (strlen($string) > 100) {
             return false;
@@ -342,22 +336,22 @@ class Functions
         return preg_match_all($this->_addressPattern, $string);
     }
 
-    function isValidCountry($string)
+    public function isValidCountry($string)
     {
         return $this->isInt($string);
     }
 
-    function isValidCity($string)
+    public function isValidCity($string)
     {
         return $this->isInt($string);
     }
 
-    function isValidZip($string)
+    public function isValidZip($string)
     {
         return $this->isAlphaNumeric($string);
     }
 
-    function isConfirmPassMatched($newPss, $confirmPass)
+    public function isConfirmPassMatched($newPss, $confirmPass)
     {
         if ($newPss === $confirmPass) {
             return true;
@@ -365,7 +359,7 @@ class Functions
         return false;
     }
 
-    function object_to_array($data)
+    public function object_to_array($data)
     {
         if (is_array($data) || is_object($data)) {
             $result = array();
@@ -378,7 +372,7 @@ class Functions
         }
     }
 
-    function search_array($array, $keys = "")
+    public function search_array($array, $keys = "")
     {
         if (is_object($array)) {
             $array = $this->object_to_array($array);
@@ -399,7 +393,7 @@ class Functions
         return $result;
     }
 
-    function findValueByKey($array, $keySearch)
+    public function findValueByKey($array, $keySearch)
     {
         $result = "";
         if (is_array($array)) {
@@ -418,7 +412,7 @@ class Functions
         return $result;
     }
 
-    function search($array, $key, $value)
+    public function search($array, $key, $value)
     {
         if (is_object($array)) {
             $array = $this->object_to_array($array);
@@ -435,7 +429,7 @@ class Functions
         return $results;
     }
 
-    function jsonResponse($response, $name)
+    public function jsonResponse($response, $name)
     {
         $response = json_encode($response, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         $cacheDuration = 900;
@@ -452,7 +446,7 @@ class Functions
         exit;
     }
 
-    function minByKey($arr, $key)
+    public function minByKey($arr, $key)
     {
         $min = array();
         foreach ($arr as $val) {
@@ -468,7 +462,7 @@ class Functions
         return min(array_keys($min));
     }
 
-    function getGMTTimestamp($time = "")
+    public function getGMTTimestamp($time = "")
     {
         if ($time == "") {
             return gmdate("Y-m-d\TH:i:s\Z");
@@ -477,7 +471,7 @@ class Functions
         }
     }
 
-    function getCurrentPageUrl()
+    public function getCurrentPageUrl()
     {
         $pageURL = 'http';
         if ($_SERVER["HTTPS"] == "on") {
@@ -492,7 +486,7 @@ class Functions
         return $pageURL;
     }
 
-    function getCurrentFile($hideExt = false)
+    public function getCurrentFile($hideExt = false)
     {
         if ($hideExt) {
             return pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
@@ -501,7 +495,7 @@ class Functions
         }
     }
 
-    function getClosest($search, $arr)
+    public function getClosest($search, $arr)
     {
         $closest = null;
         foreach ($arr as $item) {
@@ -512,7 +506,7 @@ class Functions
         return $closest;
     }
 
-    function time_ago($date, $time)
+    public function time_ago($date, $time)
     {
         $days = abs(ceil((strtotime($date) - strtotime("now")) / 86400));
         if ($days > 0)
@@ -532,19 +526,19 @@ class Functions
         return $timepast;
     }
 
-    function getExtension($str)
+    public function getExtension($str)
     {
         $ext = pathinfo($str, PATHINFO_EXTENSION);
         return $ext;
     }
 
-    function getFileName($str)
+    public function getFileName($str)
     {
         $name = pathinfo($str, PATHINFO_FILENAME);
         return $name;
     }
 
-    function getIncludeInfos()
+    public function getIncludeInfos()
     {
         $infos = array();
         $infos['included_files'] = get_included_files();
@@ -555,12 +549,12 @@ class Functions
         return $infos;
     }
 
-    function hasTags($str)
+    public function hasTags($str)
     {
         return !(strcmp($str, strip_tags($str)) == 0);
     }
 
-    function isJson($string)
+    public function isJson($string)
     {
         if (empty($string)) {
             return false;
@@ -574,7 +568,7 @@ class Functions
         }
     }
 
-    function getFilter($rows, $fields)
+    public function getFilter($rows, $fields)
     {
         if (is_string($fields)) {
             $fields = array($fields);
@@ -591,70 +585,6 @@ class Functions
             }
             return $rows;
         }
-    }
-
-    public function setHeaders($headers)
-    {
-        if (!empty($headers) && is_array($headers)) {
-            foreach ($headers as $key => $val) {
-                $this->_headers[] = $key . ': ' . $val;
-            }
-        }
-    }
-
-    public function setPostString($data, $isJson = false)
-    {
-        if ($isJson) {
-            $this->_postString = ($data);
-        } else {
-            $this->_postString = http_build_query($data);
-        }
-    }
-
-    public function setReferrer($url)
-    {
-        $this->_referrer = $url;
-    }
-
-    function getHTTPResponse($url)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/20100101 Firefox/12.0');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        if ($this->_referrer != "") {
-            curl_setopt($ch, CURLOPT_REFERER, $this->_referrer);
-        }
-        if ($this->_postString != "") {
-            curl_setopt($ch, CURLOPT_POST, 1.1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $this->_postString);
-        }
-        if (!empty($this->_headers)) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $this->_headers);
-        }
-        if ($this->_showHeader) {
-            curl_setopt($ch, CURLOPT_HEADER, 1);
-        }
-        $result = curl_exec($ch);
-        $st = curl_error($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-        if ($this->_isDebug) {
-            echo("url=" . $url . "<hr>PostFields=" . $this->_postString . "<hr>Error=" . $st . "<hr>" . "Code=" . $code . "<hr>" . nl2br(htmlspecialchars($result)) . "<hr>");
-        }
-        if ($code == 302 || $code == 301) {
-            $n_url = substr($result, strpos($result, "Location: ") + strlen("Location: "));
-            $n_url = substr($n_url, 0, strpos($n_url, "\n"));
-            if (strpos($n_url, "http://") === FALSE) {
-                $n_url = $url . $n_url;
-                $n_url = str_replace("//", "/", $n_url);
-                $n_url = str_replace("http:/", "http://", $n_url);
-            }
-            $url = $n_url;
-            $result = $result . "<br>" . self::getHTTPResponse();
-        }
-        return $result;
     }
 
     public function getConfig($key)
@@ -683,14 +613,14 @@ class Functions
         fclose($file_write);
     }
 
-    function getFileList($dir)
+    public function getFileList($dir)
     {
         $files = scandir($dir, SCANDIR_SORT_DESCENDING);
         $files = array_diff($files, array('.', '..'));
         return $files;
     }
 
-    function listDirByDate($path)
+    public function listDirByDate($path)
     {
         $dir = opendir($path);
         $list = array();
@@ -707,7 +637,7 @@ class Functions
         return $list;
     }
 
-    function writeFile($content, $filePath = "", $fileName = "", $isJson = false)
+    public function writeFile($content, $filePath = "", $fileName = "", $isJson = false)
     {
         if ($this->getConfig('log')) {
             if ($filePath == "") {
@@ -742,7 +672,7 @@ class Functions
         }
     }
 
-    function ip2Location($ip)
+    public function ip2Location($ip)
     {
         $rand = rand(0, 1);
         $ip2locUrl = $this->getConfig('ip2loc');
@@ -751,7 +681,7 @@ class Functions
         return $result;
     }
 
-    function getLatLngByAdress($address)
+    public function getLatLngByAdress($address)
     {
         if (empty($address)) {
             return array(
@@ -797,7 +727,7 @@ class Functions
         return $response;
     }
 
-    function getAddressByLatLng($lat, $lng)
+    public function getAddressByLatLng($lat, $lng)
     {
         if (empty($lat) || empty($lng)) {
             return array(
@@ -856,7 +786,7 @@ class Functions
         return $size;
     }
 
-    function getUploadImageInfo($file)
+    public function getUploadImageInfo($file)
     {
         list($width, $height, $type, $attr) = getimagesize($file['tmp_name']);
         $info = array();
@@ -868,7 +798,7 @@ class Functions
         return $info;
     }
 
-    function file_upload_error_message($error_code)
+    public function file_upload_error_message($error_code)
     {
         switch ($error_code) {
             case UPLOAD_ERR_INI_SIZE:
@@ -890,14 +820,14 @@ class Functions
         }
     }
 
-    function getImageExtension($files)
+    public function getImageExtension($files)
     {
         $imageData = getimagesize($files['tmp_name']);
         $extension = image_type_to_extension($imageData[2]);
         return $extension;
     }
 
-    function uploadImage($files, $infos = array('id' => '', 'width' => '', 'height' => '', 'save_path' => '', 'filename' => ''), $isMd5 = true)
+    public function uploadImage($files, $infos = array('id' => '', 'width' => '', 'height' => '', 'save_path' => '', 'filename' => ''), $isMd5 = true)
     {
         $imgInfo = $this->getUploadImageInfo($files);
         if (is_array($infos) && !empty($infos)) {

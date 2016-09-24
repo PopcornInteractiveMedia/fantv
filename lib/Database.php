@@ -1,4 +1,6 @@
 <?php
+namespace lib;
+
 defined( '_VALID_INCLUDE' ) or die( 'Restricted access' );
 /**
  * Its a Database Class. This class use mysqli for database connection.
@@ -8,6 +10,7 @@ defined( '_VALID_INCLUDE' ) or die( 'Restricted access' );
  * @copyright (c) 2014, PHSS
  * 
  */
+
 class Database extends Functions {
 
     private $mysqli;
