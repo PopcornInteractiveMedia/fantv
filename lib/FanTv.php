@@ -39,7 +39,7 @@ class FanTv
         return ($result);
     }
 
-    public function getTvSchedule($country, $zip, $page=1, $per_page=25)
+    public function getLineups($country, $zip, $page=1, $per_page=25)
     {
         $url = 'discover/browse/lineups';
         $this->_http->setRequestUrl($url);

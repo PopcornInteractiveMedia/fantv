@@ -27,7 +27,7 @@ foreach ($casts->data as $key => $val) {
 }*/
 
 //Get Tv Schedule
-$result = $fantv->getTvSchedule('US','90210',1,32);
+$result = $fantv->getLineups('US','90210',1,32);
 //$tvschedules = json_decode($result);
 $helper->jsonResponse($result);
 //$helper->debug($tvschedules);
