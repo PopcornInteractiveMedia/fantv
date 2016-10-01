@@ -7,9 +7,6 @@
  * Year: 2016
  */
 
-namespace lib;
-
-use lib\Functions;
 
 class HttpClient
 {

@@ -7,10 +7,6 @@
  * Year: 2016
  */
 
-namespace lib;
-
-use lib\HttpClient;
-
 
 class FanTv
 {
@@ -43,13 +39,15 @@ class FanTv
         return ($result);
     }
 
-    public function getTvSchedule($country, $zip)
+    public function getTvSchedule($country, $zip, $page=1, $per_page=25)
     {
         $url = 'discover/browse/lineups';
         $this->_http->setRequestUrl($url);
         $postStr = [
             "country"=>$country,
-            "postal_code"=>$zip
+            "postal_code"=>$zip,
+            "page" => $page,
+            "per_page" => $per_page
         ];
         $this->_http->setPostString($postStr,true);
         $result = $this->_http->request();

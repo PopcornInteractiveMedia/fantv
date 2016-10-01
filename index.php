@@ -1,9 +1,6 @@
 <?php
 require_once getcwd() . '/autoloder.php';
 
-use lib\FanTv;
-use lib\Functions;
-
 $helper = new Functions();
 
 $fantv = new FanTv();
@@ -30,8 +27,7 @@ foreach ($casts->data as $key => $val) {
 }*/
 
 //Get Tv Schedule
-
-$result = $fantv->getTvSchedule('US','90210');
-$tvschedules = json_decode($result);
-
-$helper->debug($tvschedules);
+$result = $fantv->getTvSchedule('US','90210',1,32);
+//$tvschedules = json_decode($result);
+$helper->jsonResponse($result);
+//$helper->debug($tvschedules);

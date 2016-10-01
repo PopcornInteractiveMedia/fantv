@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+
 
 defined( '_VALID_INCLUDE' ) or die( 'Restricted access' );
 /**

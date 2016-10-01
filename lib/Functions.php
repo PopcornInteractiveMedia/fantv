@@ -1,6 +1,4 @@
 <?php
-namespace lib;
-
 defined('_VALID_INCLUDE') or die('Restricted access');
 
 /**
@@ -429,9 +427,11 @@ class Functions
         return $results;
     }
 
-    public function jsonResponse($response, $name)
+    public function jsonResponse($response)
     {
-        $response = json_encode($response, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        if(is_array($response)){
+            $response = json_encode($response, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
         $cacheDuration = 900;
         header('Content-Type: application/json');
         header("Access-Control-Allow-Origin: *", true);
@@ -441,7 +441,6 @@ class Functions
         header('Cache-Control: public,max-age=' . $cacheDuration . ',must-revalidate, post-check=3600,pre-check=43200');
         header('Expires: ' . gmdate('D, d M Y H:i:s', ($_SERVER['REQUEST_TIME'] + $cacheDuration)) . ' GMT');
         header('Last-modified: ' . gmdate('D, d M Y H:i:s', $_SERVER['REQUEST_TIME']) . ' GMT');
-        //echo "processAjaxResponse(".$response.")";
         echo $response;
         exit;
     }
