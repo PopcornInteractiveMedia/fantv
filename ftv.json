@@ -1,0 +1,200 @@
+[
+    {
+        "id": {
+            "source": "fantv",
+            "space": "channels",
+            "key": "4153665"
+        },
+        "variant": "default",
+        "status": 200,
+        "etag": "7077d20714af92481728045ba3ab1b8d4367a986",
+        "data": {
+            "id": {
+                "source": "fantv",
+                "space": "channels",
+                "key": "4153665"
+            },
+            "type": "channel",
+            "channel_number": "2",
+            "channel_type": "shared",
+            "lineup": {
+                "id": {
+                    "source": "fantv",
+                    "space": "lineups",
+                    "key": "7968"
+                },
+                "type": "lineup"
+            },
+            "station_windows": [
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "8851"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1206342000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                },
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "42182"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1063350000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": {
+            "source": "fantv",
+            "space": "channels",
+            "key": "4153065"
+        },
+        "variant": "default",
+        "status": 200,
+        "etag": "17d9567d5c9ff597b164b40d988107b6201f0450",
+        "data": {
+            "id": {
+                "source": "fantv",
+                "space": "channels",
+                "key": "4153065"
+            },
+            "type": "channel",
+            "channel_number": "4",
+            "channel_type": "shared",
+            "lineup": {
+                "id": {
+                    "source": "fantv",
+                    "space": "lineups",
+                    "key": "7968"
+                },
+                "type": "lineup"
+            },
+            "station_windows": [
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "44252"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1063350000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                },
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "5950"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1206342000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": {
+            "source": "fantv",
+            "space": "channels",
+            "key": "4153756"
+        },
+        "variant": "default",
+        "status": 200,
+        "etag": "09a38231bfec8f44bad195c4ab57566f58697c9a",
+        "data": {
+            "id": {
+                "source": "fantv",
+                "space": "channels",
+                "key": "4153756"
+            },
+            "type": "channel",
+            "channel_number": "5",
+            "channel_type": "shared",
+            "lineup": {
+                "id": {
+                    "source": "fantv",
+                    "space": "lineups",
+                    "key": "7968"
+                },
+                "type": "lineup"
+            },
+            "station_windows": [
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "3946"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1206342000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                },
+                {
+                    "station": {
+                        "id": {
+                            "source": "fantv",
+                            "space": "stations",
+                            "key": "41320"
+                        },
+                        "type": "station"
+                    },
+                    "schedules": [
+                        {
+                            "start_time": 1063350000,
+                            "end_time": 4071020400,
+                            "duration": 86400,
+                            "repeat": 86400
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

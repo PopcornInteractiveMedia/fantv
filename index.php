@@ -32,8 +32,7 @@ $result = $fantv->getLineups('US','90210',1,3);
 $lineups = json_decode($result);
 //$helper->jsonResponse($lineups->lineups);
 $items = [
-    'items'=>$lineups->lineups
+    'items'=>$inputs
 ];
-$helper->jsonResponse($items);
 $result = $fantv->getMultiMetaData($lineups->lineups);
-
+$helper->jsonResponse($result);

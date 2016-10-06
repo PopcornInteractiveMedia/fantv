@@ -41,14 +41,14 @@ class FanTv
 
     public function getLineups($country, $zip, $page=1, $per_page=25)
     {
-        $url = 'discover/browse/lineups';
-        $this->_http->setRequestUrl($url);
         $postStr = [
             "country"=>$country,
             "postal_code"=>$zip,
             "page" => $page,
             "per_page" => $per_page
         ];
+        $url = 'discover/browse/lineups';
+        $this->_http->setRequestUrl($url);
         $this->_http->setPostString($postStr,true);
         $result = $this->_http->request();
         return ($result);
@@ -62,6 +62,10 @@ class FanTv
         $items = [
             'items'=>$inputs
         ];
-        
+        $url = 'metadata/multi/get';
+        $this->_http->setRequestUrl($url);
+        $this->_http->setPostString($items,true);
+        $result = $this->_http->request();
+        return ($result);
     }
 }
