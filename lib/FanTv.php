@@ -53,4 +53,15 @@ class FanTv
         $result = $this->_http->request();
         return ($result);
     }
+
+    public function getMetaData(){
+
+    }
+
+    public function getMultiMetaData($inputs){
+        $items = [
+            'items'=>$inputs
+        ];
+        
+    }
 }
