@@ -41,7 +41,7 @@ class Functions
             if ($text != "") {
                 $str .= "<h3>{$text}</h3>";
             }
-            $str .= var_export($var, true);
+            $str .= print_r($var, true);
             $str .= "</pre>";
             if ($isExit) {
                 die($str);

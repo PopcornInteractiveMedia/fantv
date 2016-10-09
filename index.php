@@ -29,10 +29,14 @@ foreach ($casts->data as $key => $val) {
 //Get Tv Schedule
 $result = $fantv->getLineups('US','90210',1,3);
 //$helper->jsonResponse($result);
-$lineups = json_decode($result);
-//$helper->jsonResponse($lineups->lineups);
-$items = [
-    'items'=>$inputs
-];
-$result = $fantv->getMultiMetaData($lineups->lineups);
-$helper->jsonResponse($result);
+$result = $fantv->getChannels($result);
+//$helper->jsonResponse($result);
+$channels = json_decode($result);
+foreach($channels as $channel){
+    $result = $fantv->getStations($channel->data->channels);
+    $helper->jsonResponse($result);
+    echo '<hr>';
+}
+
+
+

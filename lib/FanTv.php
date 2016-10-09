@@ -54,8 +54,13 @@ class FanTv
         return ($result);
     }
 
-    public function getMetaData(){
+    public function getChannels($inputs){
+        $inputs = json_decode($inputs);
+        return $this->getMultiMetaData($inputs->lineups);
+    }
 
+    public function getStations($inputs){
+        return $this->getMultiMetaData($inputs);
     }
 
     public function getMultiMetaData($inputs){
